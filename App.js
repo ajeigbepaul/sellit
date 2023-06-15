@@ -1,4 +1,7 @@
 
+import Icon from './app/components/Icon';
+import ListItems from './app/components/ListItems';
+import Screen from './app/components/Screen';
 import ListingDetailsScreen from './app/screen/ListingDetailsScreen';
 import MessageScreen from './app/screen/MessageScreen';
 import ViewImageScreen from './app/screen/ViewImageScreen';
@@ -9,7 +12,11 @@ export default function App() {
   //  <WelcomeScreen/>
   // <ViewImageScreen/>
   // <ListingDetailsScreen/>
-  <MessageScreen/>
+  // <MessageScreen/>
+  <Screen>
+  <ListItems title="Hello" subTitle="How are you" ImageComponent={<Icon name="email"/>}/>
+  </Screen>
+  
   );
 }
 

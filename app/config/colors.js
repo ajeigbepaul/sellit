@@ -5,5 +5,6 @@ export default {
     white:'#fff',
     pricecolor:'dodgerblue',
     medium:'#999',
-    light:'#e5e5e5'
+    light:'#e5e5e5',
+    danger:'#ff5252'
 }
