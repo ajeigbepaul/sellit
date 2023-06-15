@@ -15,11 +15,15 @@ function ListingDetailsScreen() {
         <View style={styles.listDetails}>
           <Text style={styles.listTitle}>Sleek jacket for sale</Text>
           <Text style={styles.listSubtitle}>N 30,000</Text>
-          <ListItems image={require('../assets/profilepics.jpg')} title="Ajeigbe Paul" subTitle="5 listings"/>
+          <View style={styles.listItemsContainer}>
+            <ListItems
+              image={require("../assets/profilepics.jpg")}
+              title="Ajeigbe Paul"
+              subTitle="5 listings"
+            />
+          </View>
         </View>
       </View>
-
-      
     </View>
   );
 }
@@ -42,6 +46,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 300,
   },
+  listItemsContainer: { marginTop: 25 },
   listDetails: {
     paddingHorizontal: 20,
     width: "100%",

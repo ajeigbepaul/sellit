@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import { Image } from 'react-native'
+import colors from '../config/colors';
 export default function ListItems({image,title,subTitle}) {
   return (
     <View style={styles.listItemContainer}>
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     alignItems: "flex-start",
-    marginTop: 50,
+    padding:15
   },
   listItemDetails: {
     flexDirection: "column",
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   listName: {fontWeight:'500', fontSize:16, marginBottom:5},
-  listListings: {fontSize:16,color:'#999'},
+  listListings: {fontSize:16,color:colors.medium},
   profilePics: {
     width: 50,
     height: 50,

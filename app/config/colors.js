@@ -3,5 +3,7 @@ export default {
     secondary:'#4ecdc4',
     black:'#000',
     white:'#fff',
-    pricecolor:'dodgerblue'
+    pricecolor:'dodgerblue',
+    medium:'#999',
+    light:'#e5e5e5'
 }
