@@ -13,6 +13,7 @@ import MessageScreen from './app/screen/MessageScreen';
 import ViewImageScreen from './app/screen/ViewImageScreen';
 import WelcomeScreen from './app/screen/WelcomeScreen';
 import LoginScreen from './app/screen/LoginScreen';
+import ListingEditScreen from './app/screen/ListingEditScreen';
 
 export default function App() {
   return (
@@ -22,7 +23,8 @@ export default function App() {
     // <MessageScreen/>
     // <AccountScreen/>
     // <ListingScreen/>
-    <LoginScreen/>
+   <ListingEditScreen/>
+    // <LoginScreen/>
     
     
   );

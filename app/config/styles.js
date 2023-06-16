@@ -4,8 +4,10 @@ import colors from "./colors";
 export default {
   colors,
   text: {
-    fontSize: 18,
+    width:'100%',
+    fontSize: 16,
     color: colors.medium,
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
+   
   },
 };
