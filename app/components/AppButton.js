@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, TouchableOpacity, StyleSheet } from "react-native";
 import colors from "../config/colors";
 
 function AppButton({ title, handlePress, bgcolor }) {
+ 
   return (
     <TouchableOpacity
       onPress={handlePress}

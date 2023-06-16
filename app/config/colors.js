@@ -6,5 +6,6 @@ export default {
     pricecolor:'dodgerblue',
     medium:'#999',
     light:'#e5e5e5',
-    danger:'#ff5252'
+    danger:'#ff5252',
+    logout:'#ffe66d'
 }

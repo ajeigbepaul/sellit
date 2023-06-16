@@ -25,7 +25,7 @@ export default function ListItems({
            {image && <Image source={image} style={styles.profilePics} />}
             <View style={styles.listItemDetails}>
               <Text style={styles.listName}>{title}</Text>
-              <Text style={styles.listListings}>{subTitle}</Text>
+              {subTitle && <Text style={styles.listListings}>{subTitle}</Text>}
             </View>
           </View>
         </TouchableHighlight>
@@ -38,12 +38,12 @@ const styles = StyleSheet.create({
   listItemContainer: {
     width: "100%",
     flexDirection: "row",
-    alignItems: "flex-start",
+    // alignItems: "flex-start",
     padding: 15,
   },
   listItemDetails: {
     flexDirection: "column",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     marginHorizontal: 10,
   },
   listName: { fontWeight: "500", fontSize: 16, marginBottom: 5 },
