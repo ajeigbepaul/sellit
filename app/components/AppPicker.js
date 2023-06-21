@@ -13,7 +13,15 @@ import AppText from "./AppText";
 import Screen from "./Screen";
 import PickerItem from "./PickerItem";
 
-export default function AppPicker({ icon, placeholder, items, selectedItem, onSelectItem, numberOfColumns = 1, PickerItemComponent = PickerItem }) {
+export default function AppPicker({
+  icon,
+  placeholder,
+  items,
+  selectedItem,
+  onSelectItem,
+  numberOfColumns = 1,
+  PickerItemComponent = PickerItem,
+}) {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -52,6 +60,7 @@ export default function AppPicker({ icon, placeholder, items, selectedItem, onSe
                 onPress={() => {
                   setModalVisible(false);
                   onSelectItem(item);
+                  // console.log('hello')
                 }}
               />
             )}
@@ -79,6 +88,6 @@ const styles = StyleSheet.create({
   },
   placeholder: {
     flex: 1,
-    color:defaultStyle.colors.medium
+    color: defaultStyle.colors.medium,
   },
 });
