@@ -1,18 +1,29 @@
 import React from "react";
-import { Image, ImageBackground, StyleSheet, View, Text } from "react-native";
-import colors from "../config/colors";
+import { Image, ImageBackground, StyleSheet } from "react-native";
 import AppButton from "../components/AppButton";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 
-function WelcomeScreen() {
+
+function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
       source={require("../assets/bgimg2.jpg")}
       style={styles.backgroundContainer}
     >
       <Image source={require("../assets/logo2.png")} style={styles.logo} />
-      <AppButton title="Login" bgcolor="primary" handlePress={() => {}} />
-      <AppButton title="Register" bgcolor="secondary" handlePress={() => {}} />
+      <AppButton
+        title="Login"
+        bgcolor="primary"
+        onPress={() => {
+          navigation.navigate("Login");
+        }}
+      />
+      <AppButton
+        title="Register"
+        bgcolor="secondary"
+        onPress={() => {
+          navigation.navigate("Register");
+        }}
+      />
     </ImageBackground>
   );
 }

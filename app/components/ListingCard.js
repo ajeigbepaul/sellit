@@ -1,9 +1,11 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableWithoutFeedback } from "react-native";
 import React from "react";
 import colors from "../config/colors";
 
-export default function ListingCard({ image, title, price }) {
+export default function ListingCard({ image, title, price, onPress }) {
   return (
+    <TouchableWithoutFeedback onPress={onPress}>
+
     <View style={styles.listContainer}>
       <Image source={image} resizeMode="cover" style={styles.listImage} />
       <View style={styles.listDetails}>
@@ -11,6 +13,7 @@ export default function ListingCard({ image, title, price }) {
         <Text style={styles.listSubtitle}>N{price}</Text>
       </View>
     </View>
+    </TouchableWithoutFeedback>
   );
 }
 const styles = StyleSheet.create({

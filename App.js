@@ -16,7 +16,12 @@ import { Alert, Button, Image } from "react-native";
 import ImageInput from "./app/components/ImageInput";
 import useImage from "./app/hook/useImage";
 import ImageInputList from "./app/components/ImageInputList";
+import { NavigationContainer } from "@react-navigation/native";
 import { useState } from "react";
+import AuthNavigator from "./app/navigation/AuthNavigator";
+import navigationTheme from "./app/navigation/navigationTheme";
+import AppNavigator from "./app/navigation/AppNavigator";
+import { AuthProvider } from "./app/contextapi/authProvider";
 export default function App() {
   return (
     //  <WelcomeScreen/>
@@ -25,8 +30,13 @@ export default function App() {
     // <MessageScreen/>
     // <AccountScreen/>
     // <ListingScreen/>
-     <ListingEditScreen/>
+    //  <ListingEditScreen/>
     // <LoginScreen/>
-   
+    //  <AuthNavigator /> 
+    <AuthProvider>
+      <NavigationContainer theme={navigationTheme}>
+         <AppNavigator />
+       </NavigationContainer>
+    </AuthProvider>
   );
 }

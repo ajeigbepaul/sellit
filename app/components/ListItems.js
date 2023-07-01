@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    padding: 15,
+    padding: 10,
   },
   listItemDetails: {
     // flexDirection: "column",

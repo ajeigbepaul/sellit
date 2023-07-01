@@ -4,18 +4,19 @@ import colors from "../config/colors";
 import ListItems from "../components/ListItems";
 import ListingCard from "../components/ListingCard";
 
-function ListingDetailsScreen() {
+function ListingDetailsScreen({route}) {
+  const listing = route.params
   return (
     <View style={styles.container}>
       <View style={styles.listContainer}>
         <Image
-          source={require("../assets/listimg1.jpg")}
+          source={listing.image}
           resizeMode="cover"
           style={styles.listImage}
         />
         <View style={styles.listDetails}>
-          <Text style={styles.listTitle}>Sleek jacket for sale</Text>
-          <Text style={styles.listSubtitle}>N 30,000</Text>
+          <Text style={styles.listTitle}>{listing.title}</Text>
+          <Text style={styles.listSubtitle}>N {listing.price}</Text>
           <View style={styles.listItemsContainer}>
             <ListItems
               image={require("../assets/profilepics.jpg")}
@@ -32,14 +33,10 @@ function ListingDetailsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // padding: 20,
-    // paddingTop: 80,
     backgroundColor: "#f8f3f3",
   },
   listContainer: {
     flex: 1,
-    // borderRadius: 15,
-    // backgroundColor: colors.white,
     overflow: "hidden",
     marginBottom: 20,
   },
@@ -49,7 +46,7 @@ const styles = StyleSheet.create({
   },
   listItemsContainer: { marginTop: 25 },
   listDetails: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     width: "100%",
   },
   listTitle: {
