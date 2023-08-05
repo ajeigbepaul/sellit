@@ -5,18 +5,31 @@ import Screen from "../components/Screen";
 import AppFormField from "../components/form/AppFormField";
 import SubmitButton from "../components/form/SubmitButton";
 import AppForm from "../components/form/AppForm";
+import client from "../api/client";
 const validationSchema = Yup.object().shape({
   username: Yup.string().required().label("Username"),
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label("Password"),
 });
-export default function RegisterScreen() {
+export default function RegisterScreen({ navigation }) {
+  const handleRegister = async (values) => {
+    try {
+      const res = await client.post("/users", {
+        ...values,
+      });
+      console.log(res.data);
+      navigation.navigate("Login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Screen style={styles.container}>
       <Image source={require("../assets/logo2.png")} style={styles.logo} />
+
       <AppForm
-        initialValues={{ email: "", password: "", username:"" }}
-        onSubmit={(values) => console.log(values)}
+        initialValues={{ email: "", password: "", username: "" }}
+        onSubmit={handleRegister}
         validationSchema={validationSchema}
       >
         <AppFormField icon="account" placeholder="Username" name="username" />
@@ -29,7 +42,7 @@ export default function RegisterScreen() {
           name="password"
           secureTextEntry={true}
         />
-        <SubmitButton title="Login" bgcolor="primary" />
+        <SubmitButton title="Register" bgcolor="primary" />
       </AppForm>
     </Screen>
   );

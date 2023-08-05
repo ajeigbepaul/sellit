@@ -1,13 +1,13 @@
-import { View, Text, StyleSheet, Image, TouchableWithoutFeedback } from "react-native";
+import { View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import React from "react";
 import colors from "../config/colors";
-
-export default function ListingCard({ image, title, price, onPress }) {
+import { Image } from "react-native-expo-image-cache";
+export default function ListingCard({ image, title, price, onPress, thumbnailUrl }) {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
 
     <View style={styles.listContainer}>
-      <Image source={image} resizeMode="cover" style={styles.listImage} />
+      <Image uri={image} resizeMode="cover" style={styles.listImage} preview={{uri:thumbnailUrl}} />
       <View style={styles.listDetails}>
         <Text style={styles.listTitle}>{title}</Text>
         <Text style={styles.listSubtitle}>N{price}</Text>

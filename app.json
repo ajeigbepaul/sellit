@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ba931457-3270-4135-8919-e0c4cafc7f17"
+      }
+    },
+    "owner": "ajeigbepaul"
   }
 }

@@ -3,13 +3,13 @@ import AppTextInput from "../AppTextInput";
 import ErrorMessage from "./ErrorMessage";
 import { useFormikContext } from "formik";
 export default function AppFormField({ name, ...otherProps }) {
-  const { setFieldTouched, touched, errors, handleChange } = useFormikContext();
+  const { setFieldTouched,setFieldValue, values, touched, errors } = useFormikContext();
+  // if you want to track the value. Just add the Values props and then 
   return (
     <>
       <AppTextInput
-        // icon="email"
-        // placeholder="Email"
-        onChangeText={handleChange(name)}
+        value={values[name]}
+        onChangeText={text=>setFieldValue(name, text)}
         onBlur={() => setFieldTouched(name)}
         {...otherProps}
       />

@@ -1,16 +1,28 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, PanResponder } from "react-native";
 import React from "react";
 import colors from "../config/colors";
 import ListItems from "../components/ListItems";
-import ListingCard from "../components/ListingCard";
-
+import { Image } from "react-native-expo-image-cache";
+import { useNavigation } from "@react-navigation/native";
 function ListingDetailsScreen({route}) {
+  const navigation = useNavigation();
   const listing = route.params
+  const panResponder = React.useRef(
+    PanResponder.create({
+      onPanResponderEnd: (e, gestureState) => {
+        // Check if the swipe down gesture is significant (enough to navigate back)
+        if (gestureState.dy > 50) {
+          navigation.goBack(); // Navigate back to the previous screen
+        }
+      },
+      onShouldBlockNativeResponder: () => true, // Allow pan gesture to be recognized
+    })
+  ).current;
   return (
-    <View style={styles.container}>
+    <View style={styles.container} {...panResponder.panHandlers}>
       <View style={styles.listContainer}>
         <Image
-          source={listing.image}
+          uri={listing.images[0]}
           resizeMode="cover"
           style={styles.listImage}
         />

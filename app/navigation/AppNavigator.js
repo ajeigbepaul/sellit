@@ -1,14 +1,14 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import ListingScreen from "../screen/ListingScreen";
 import ListingEditScreen from "../screen/ListingEditScreen";
-import AccountScreen from "../screen/AccountScreen";
 import FeedNavigator from "./FeedNavigator";
 import AccountNavigator from "./AccountNavigator";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import NewListingButton from "./NewListingButton";
+import usePushToken from "../hook/usePushToken";
 const Tab = createBottomTabNavigator();
-
 const AppNavigator = () => {
+  const {expoPushToken} = usePushToken()
+  console.log(expoPushToken)
   return (
     <Tab.Navigator screenOptions={{headerShown:false}}>
       <Tab.Screen

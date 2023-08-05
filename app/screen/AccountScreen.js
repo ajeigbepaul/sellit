@@ -5,7 +5,8 @@ import ListItems from "../components/ListItems";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
 import ItemSeperatorView from "../components/ItemSeperatorView";
-
+import useLogout from "../hook/useLogout";
+import authStorage from '../contextapi/storage'
 const MenuItems = [
   {
     title: "My Listing",
@@ -20,10 +21,25 @@ const MenuItems = [
       name: "email",
       backgroundColor: colors.secondary,
     },
-    targetScreen:'Messages'
+    targetScreen: "Messages",
+  },
+  {
+    title: "Upload profilepics",
+    icon: {
+      name: "camera-account",
+      backgroundColor: colors.secondary,
+    },
+    targetScreen: "Uploadprofile",
   },
 ];
 export default function AccountScreen({navigation}) {
+  const logout = useLogout()
+  const handleDelete = async()=>{
+     await logout()
+     authStorage.removeToken()
+
+     navigation.navigate('Login')
+  }
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
@@ -52,7 +68,7 @@ export default function AccountScreen({navigation}) {
           )}
         />
       </View>
-      <ListItems title="Logout" ImageComponent={<Icon name="logout" backgroundColor={colors.logout}/>}/>
+      <ListItems title="Logout" handlePress={handleDelete} ImageComponent={<Icon name="logout" backgroundColor={colors.logout}/>}/>
     </Screen>
   );
 }

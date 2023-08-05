@@ -4,10 +4,9 @@ import * as ImagePicker from "expo-image-picker";
 import { useFormikContext } from "formik";
 
 export default function useMultipleImg() {
-  const { errors, setFieldValue, touched,} = useFormikContext();
+  const { errors, setFieldValue, touched} = useFormikContext();
   const [imageUris, setImageUris] = useState([]);
   const [newImg, setNewImg] = useState(null);
-
   const onChangeImage = (assets) => {
     setImageUris(assets);
     if (assets.length > 0) {
@@ -58,5 +57,12 @@ export default function useMultipleImg() {
     }
   };
 
-  return { handleAdd, handlePress, imageUris,errors,touched};
+  return {
+    handleAdd,
+    handlePress,
+    imageUris,
+    errors,
+    touched,
+    // resetImagePicker,
+  };
 }

@@ -3,62 +3,57 @@ import React, { useEffect, useState } from "react";
 import Screen from "../components/Screen";
 import ListingCard from "../components/ListingCard";
 import colors from "../config/colors";
- import getTesting from "../api/listings";
-import AppText from '../components/AppText'
-import AppButton from '../components/AppButton'
+import AppText from "../components/AppText";
+import AppButton from "../components/AppButton";
 import ActivityIndicator from "../components/ActivityIndicator";
-const listings = [
-  {
-    id: 1,
-    title: "Buy my jacket",
-    price: "10,000",
-    image: require("../assets/listimg1.jpg"),
-  },
-  {
-    id: 2,
-    title: "Buy my watch",
-    price: "15,000",
-    image: require("../assets/listimg2.jpg"),
-  },
-  {
-    id: 3,
-    title: "Nice Shoe",
-    price: "5,000",
-    image: require("../assets/listimg3.jpg"),
-  },
-];
+import useAxiosPrivate from "../hook/useAxios";
+import client from "../api/client";
+
+
+
 export default function ListingScreen({ navigation }) {
-  const [test, setTest] = useState("");
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false)
-  const getTest = async () => {
+  const axiosPrivate = useAxiosPrivate();
+  const thumbnail = 'https://img.freepik.com/free-vector/colourful-africa-map-logo-with-slogan-placeholder_23-2148737216.jpg?q=10&h=200'
+  const [listings, setListings] = useState([]);
+  const [loading,setLoading] = useState(false);
+  const [error, setError] = useState(false)
+ 
+  const getListing = async () => {
     setLoading(true)
-    const response = await getTesting();
-    setLoading(false)
-    if(!response.ok) return setError(true)
-    setError(false)
-    setTest(response.data);
+    const res = await client.get("/listing");
+    setLoading(false);
+
+    if (!res) return setError(true);
+
+    setError(false);
+    setListings(res.data);
+    // console.log(listings);
   };
-  // useEffect(() => {
-  //   getTest();
-  // }, []);
-  console.log(test);
+  useEffect(() => {
+    getListing();
+  }, []);
+
   return (
     <Screen style={styles.screen}>
-     { error && <>
-     <AppText>Sorry temporarily down</AppText>
-     <AppButton title="Refresh" bgcolor={colors.primary} onPress={getTest}/>
-     </>}
-     <ActivityIndicator visible={loading}/>
+      {error && (
+        <>
+          <AppText>Sorry temporarily down</AppText>
+          <AppButton title="Refresh" bgcolor="primary" onPress={getListing} />
+        </>
+      )}
+      {/* <ActivityIndicator visible={isloading}/> */}
+      
+      {loading && <ActivityIndicator visible={true} />}
       <FlatList
         data={listings}
-        keyExtractor={(listing) => listing.id.toString()}
+        keyExtractor={(listing) => listing._id.toString()}
         renderItem={({ item }) => (
           <ListingCard
             title={item.title}
             price={item.price}
-            image={item.image}
+            image={item.images[0]}
             onPress={() => navigation.navigate("ListingDetails", item)}
+            thumbnailUrl={thumbnail}
           />
         )}
       />
